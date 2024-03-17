@@ -127,22 +127,22 @@ print('\n')
 після другої спроби програма повинна завершуватись з повідомленням Спроби скінчились.
 """
 
-attempts = []
+attempts_counter = 0
 
-while len(attempts) < 2:
+while attempts_counter < 2:
 
     number_1 = int(input('Enter number 1: '))
     number_2 = int(input('Enter number 2: '))
     operator = input('Enter operator: ')
 
     if operator not in '+, -, *, /':
-        attempts.append(True)
+        attempts_counter += 1
         print('Sorry! We can not recognise this operator.\n')
         continue
 
     elif operator == '/':
         if number_2 == 0:
-            attempts.append(True)
+            attempts_counter += 1
             print('You can not division by 0.\n')
             continue
         else:
