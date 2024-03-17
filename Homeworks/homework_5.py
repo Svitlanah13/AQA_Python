@@ -76,63 +76,48 @@ print('\n')
 Використовуйте try, except, else, finally для обробки можливих винятків.
 """
 
-attempts_counter = 0
-
-while attempts_counter < 2:
+while True:
 
     try:
         number_1 = input('Enter number 1: ')
         if number_1.lower() == 'exit':
             raise KeyboardInterrupt
-        if number_1.isdigit():
-            number_1 = int(number_1)
-        else:
-            raise ValueError('Entered value is not digit')
 
         number_2 = input('Enter number 2: ')
         if number_2.lower() == 'exit':
             raise KeyboardInterrupt
-        if number_2.isdigit():
-            number_2 = int(number_2)
-        else:
-            raise ValueError('Entered value is not digit')
 
         operator = input('Enter operator (+, -, *, /): ')
         if operator.lower() == 'exit':
             raise KeyboardInterrupt
 
-        if operator not in ['+', '-', '*', '/']:
-            raise ValueError('Not recognised operator')
-
-        if operator == '/' and number_2 == 0:
+        if number_2 == 0 and operator == '/':
             raise ZeroDivisionError('You can not division by zero')
 
+        if operator not in '+, -, *, /':
+            print('Sorry! We can not recognise this operator. Please try again.\n')
+            continue
+
         if operator == '+':
-            result = number_1 + number_2
+            result = int(number_1) + int(number_2)
         elif operator == '-':
-            result = number_1 - number_2
+            result = int(number_1) - int(number_2)
         elif operator == '*':
-            result = number_1 * number_2
+            result = int(number_1) * int(number_2)
         elif operator == '/':
-            result = number_1 / number_2
+            result = int(number_1) / int(number_2)
 
         print(f'Result: {number_1} {operator} {number_2} = {result}')
-        attempts_counter = 0
 
     except KeyboardInterrupt:
         print('Exiting the calculator by user decision.')
         break
 
-    except (ValueError, ZeroDivisionError) as e:
-        attempts_counter += 1
+    except ZeroDivisionError as e:
         print(f'Error: {e}. Please try again.\n')
 
     except Exception as e:
-        attempts_counter += 1
         print(f'Unexpected error occurred: {e}. Please try again.\n')
 
     finally:
         print('End of calculation.\n')
-
-else:
-    print('Sorry, there are no attempts left. Exiting the calculator.')
