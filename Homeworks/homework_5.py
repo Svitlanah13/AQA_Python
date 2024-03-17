@@ -136,3 +136,4 @@ while attempts_counter < 2:
 
 else:
     print('Sorry, there are no attempts left. Exiting the calculator.')
+
