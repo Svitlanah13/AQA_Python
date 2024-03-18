@@ -81,15 +81,18 @@ while True:
     try:
         number_1 = input('Enter number 1: ')
         if number_1.lower() == 'exit':
-            raise KeyboardInterrupt
+            print('Exiting the calculator by user decision.')
+            break
 
         number_2 = input('Enter number 2: ')
         if number_2.lower() == 'exit':
-            raise KeyboardInterrupt
+            print('Exiting the calculator by user decision.')
+            break
 
         operator = input('Enter operator (+, -, *, /): ')
         if operator.lower() == 'exit':
-            raise KeyboardInterrupt
+            print('Exiting the calculator by user decision.')
+            break
 
         if number_2 == 0 and operator == '/':
             raise ZeroDivisionError('You can not division by zero')
@@ -98,20 +101,18 @@ while True:
             print('Sorry! We can not recognise this operator. Please try again.\n')
             continue
 
+        number_1, number_2 = int(number_1), int(number_2)
+
         if operator == '+':
-            result = int(number_1) + int(number_2)
+            result = number_1 + number_2
         elif operator == '-':
-            result = int(number_1) - int(number_2)
+            result = number_1 - number_2
         elif operator == '*':
-            result = int(number_1) * int(number_2)
+            result = number_1 * number_2
         elif operator == '/':
-            result = int(number_1) / int(number_2)
+            result = number_1 / number_2
 
         print(f'Result: {number_1} {operator} {number_2} = {result}')
-
-    except KeyboardInterrupt:
-        print('Exiting the calculator by user decision.')
-        break
 
     except ZeroDivisionError as e:
         print(f'Error: {e}. Please try again.\n')
