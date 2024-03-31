@@ -78,21 +78,18 @@ print('\n')
 
 while True:
 
+    def user_data(data):
+        user_input = input(data)
+        if user_input.lower() == 'exit':
+            print('Exiting the calculator by user decision.')
+            exit()
+        return user_input
+
     try:
-        number_1 = input('Enter number 1: ')
-        if number_1.lower() == 'exit':
-            print('Exiting the calculator by user decision.')
-            break
 
-        number_2 = input('Enter number 2: ')
-        if number_2.lower() == 'exit':
-            print('Exiting the calculator by user decision.')
-            break
-
-        operator = input('Enter operator (+, -, *, /): ')
-        if operator.lower() == 'exit':
-            print('Exiting the calculator by user decision.')
-            break
+        number_1 = user_data('Enter number 1: ')
+        number_2 = user_data('Enter number 2: ')
+        operator = user_data('Enter operator (+, -, *, /): ')
 
         if number_2 == 0 and operator == '/':
             raise ZeroDivisionError('You can not division by zero')
