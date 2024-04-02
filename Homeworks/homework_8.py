@@ -12,15 +12,19 @@ Hnatiuk Svitlana
 (курс задається окремою змінною). Результат зберегти новий файл salaries_uah.csv
 """
 
+import os
 import csv
 
+
+file_path = os.path.dirname(os.path.abspath(__file__))
+
 file_name = 'test_file.csv'
-file_path = '/Users/svitlanahnatiuk/Downloads/Python'
+input_file_path = os.path.join(file_path, file_name)
 
 exchange_rate = 39.16
 
-input_file_path = file_path + '/' + file_name
-output_file_path = file_path + '/salaries_uah.csv'
+output_file_name = 'salaries_uah.csv'
+output_file_path = os.path.join(file_path, output_file_name)
 
 with open(input_file_path, mode='r', newline='') as input_file, \
         open(output_file_path, mode='w', newline='') as output_file:
