@@ -75,6 +75,34 @@ class Heating:
 class HomeFacade():
 
     def __init__(self):
+        self._tv = TV()
+        self._lights = Lights()
+        self._heating = Heating()
+
+    @property
+    def tv(self):
+        return self._tv
+
+    @property
+    def lights(self):
+        return self._lights
+
+    @property
+    def heating(self):
+        return self._heating
+
+    def come_home(self):
+        self._tv.turn_on()
+        self._lights.turn_on()
+        self._heating.turn_on()
+
+    def go_out(self):
+        self._tv.turn_off()
+        self._lights.turn_off()
+        self._heating.turn_off()
+
+"""
+    def __init__(self):
         self.tv = TV()
         self.lights = Lights()
         self.heating = Heating()
@@ -88,8 +116,7 @@ class HomeFacade():
         self.tv.turn_off()
         self.lights.turn_off()
         self.heating.turn_off()
-
-
+"""
 
 home = HomeFacade()
 home.come_home()
