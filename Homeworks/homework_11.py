@@ -20,19 +20,25 @@ Hnatiuk Svitlana
 class Ship:
 
     def __init__(self, type: str, speed: int):
-        self.type = type
-        self.speed = speed
+        self.__type = type
+        self.__speed = speed
 
-    def get_type(self):
-        return self.type
+    @property
+    def type(self):
+        return self.__type
 
-    def set_speed(self, value: int):
+    @property
+    def speed(self):
+        return self.__speed
+
+    @speed.setter
+    def speed(self, value: int):
         if value <= 0:
-            return 'This machine is not active'
+            print('This machine is not active')
         elif value >= 40:
-            return 'We have to reduce the speed'
+            print('We have to reduce the speed')
         else:
-            self.speed = value
+            self.__speed = value
 
 
 class Lainer(Ship):
@@ -40,5 +46,5 @@ class Lainer(Ship):
     def __init__(self, type: str, speed: int):
         super().__init__(type, speed)
 
-    def entertaiment(self):
+    def entertainment(self):
         print('Bowling')
