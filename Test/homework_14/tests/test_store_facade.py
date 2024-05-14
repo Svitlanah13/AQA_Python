@@ -37,3 +37,4 @@ def test_show_catalog_empty(store):
 def test_remove_nonexistent_phone(store, model):
     with pytest.raises(IndexError):
         store.remove_phone_from_catalog(model)
+
